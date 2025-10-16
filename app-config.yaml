@@ -129,7 +129,7 @@ genai:
         # For AWS Bedrock (recommended for AWS deployments):
         bedrock:
           modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0'
-          region: us-west-2
+          region: us-east-1
         # For OpenAI (requires OPENAI_API_KEY environment variable):
         # openai:
         #   apiKey: ${OPENAI_API_KEY}
@@ -146,7 +146,7 @@ aws:
   costInsights:
     costExplorer:
       # accountId: '1111111111'  # Optional: Specify AWS account ID for consolidated billing
-      # region: us-west-2  # Optional: Specify AWS region
+      # region: us-east-1  # Optional: Specify AWS region
       costMetric: UnblendedCost # Options: UnblendedCost, AmortizedCost, etc.
     cache:
       enable: true # Enable caching to reduce API costs

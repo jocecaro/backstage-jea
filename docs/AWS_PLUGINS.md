@@ -31,7 +31,7 @@ genai:
         messagesMaxTokens: 150000
         bedrock:
           modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0'
-          region: us-west-2
+          region: us-east-1
       tools:
         - backstageCatalogSearch
         - backstageEntity
@@ -234,7 +234,7 @@ For local development, use one of:
    ```bash
    export AWS_ACCESS_KEY_ID=your_key
    export AWS_SECRET_ACCESS_KEY=your_secret
-   export AWS_REGION=us-west-2
+   export AWS_REGION=us-east-1
    ```
 
 3. **AWS SSO**
