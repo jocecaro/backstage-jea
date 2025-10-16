@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: backstage-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      POSTGRES_DB: backstage
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backstage-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U backstage"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backstage:
+    build:
+      context: .
+      dockerfile: packages/backend/Dockerfile
+    container_name: backstage-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      # Optional: Add GitHub token for integrations
+      # GITHUB_TOKEN: ${GITHUB_TOKEN}
+    ports:
+      - "7007:7007"
+    networks:
+      - backstage-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  backstage-network:
+    driver: bridge
