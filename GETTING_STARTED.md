@@ -22,11 +22,14 @@ Best for development and customization:
 # 1. Install dependencies
 yarn install
 
-# 2. Start Backstage
+# 2. Start Backstage (builds automatically in development mode)
 yarn start
 ```
 
+This starts both the frontend (port 3000) and backend (port 7007).
 Access at: http://localhost:3000
+
+**Note**: `yarn start` automatically builds and hot-reloads during development. No separate build step is needed.
 
 ### Option 2: Run with Docker
 
@@ -36,7 +39,7 @@ Best for testing production setup:
 # 1. Build the application
 yarn install
 yarn tsc
-yarn build:backend
+yarn build:backend  # Builds both frontend and backend
 
 # 2. Start with Docker Compose
 docker-compose up -d
@@ -46,6 +49,8 @@ docker-compose logs -f backstage
 ```
 
 Access at: http://localhost:7007
+
+**Note**: The backend build includes the frontend as a static bundle served by the backend.
 
 ## 📖 Next Steps
 
@@ -134,8 +139,10 @@ yarn install
 ```bash
 yarn install
 yarn tsc
-yarn build:backend
+yarn build:backend  # Includes building the frontend as a dependency
 ```
+
+**Note**: The `yarn build:backend` command automatically builds the frontend app first, then builds the backend with the frontend bundle included. This produces a single deployable backend package.
 
 ### Run Tests
 
