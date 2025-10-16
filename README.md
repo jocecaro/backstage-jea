@@ -119,12 +119,19 @@ docker-compose build
 
 ## 🔌 AWS Plugins
 
-This Backstage instance is configured to support AWS plugins from [backstage-plugins-for-aws](https://github.com/awslabs/backstage-plugins-for-aws).
+This Backstage instance includes AWS plugins from [backstage-plugins-for-aws](https://github.com/awslabs/backstage-plugins-for-aws):
 
-### Planned Plugins
+### Installed Plugins
 
-- **AWS Gen-AI Plugin**: Integration with AWS AI services
+- **AWS Gen-AI Plugin**: AI-powered assistant using AWS Bedrock (Claude models) or OpenAI
+  - Navigate to "AI Assistant" in the sidebar
+  - Ask questions about your platform, infrastructure, and documentation
+  
 - **AWS Cost Insights Plugin**: AWS cost monitoring and optimization
+  - View overall AWS spending in "Cost Insights" 
+  - See component-specific costs in entity pages
+
+For detailed configuration and usage instructions, see [AWS Plugins Documentation](./docs/AWS_PLUGINS.md).
 
 ## 🛠️ Configuration
 

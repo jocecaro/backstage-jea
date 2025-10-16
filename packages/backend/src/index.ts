@@ -63,4 +63,9 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 backend.add(import('@backstage/plugin-notifications-backend'));
 backend.add(import('@backstage/plugin-signals-backend'));
 
+// AWS plugins
+backend.add(import('@aws/genai-plugin-for-backstage-backend'));
+backend.add(import('@aws/genai-plugin-langgraph-agent-for-backstage'));
+backend.add(import('@aws/cost-insights-plugin-for-backstage-backend'));
+
 backend.start();

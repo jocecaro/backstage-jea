@@ -37,9 +37,13 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
+import { AgentChatPage } from '@aws/genai-plugin-for-backstage';
+import { costInsightsAwsPlugin } from '@aws/cost-insights-plugin-for-backstage';
+import { CostInsightsPage } from '@backstage-community/plugin-cost-insights';
 
 const app = createApp({
   apis,
+  plugins: [costInsightsAwsPlugin],
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -97,6 +101,8 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/notifications" element={<NotificationsPage />} />
+    <Route path="/assistant/:agentName" element={<AgentChatPage />} />
+    <Route path="/cost-insights" element={<CostInsightsPage />} />
   </FlatRoutes>
 );
 

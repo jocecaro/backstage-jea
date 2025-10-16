@@ -28,6 +28,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { MyGroupsSidebarItem } from '@backstage/plugin-org';
 import GroupIcon from '@material-ui/icons/People';
 import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
+import ChatIcon from '@material-ui/icons/Chat';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -76,6 +78,9 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
         <SidebarItem icon={LibraryBooks} to="docs" text="Docs" />
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
+        <SidebarDivider />
+        <SidebarItem icon={ChatIcon} to="assistant/general" text="AI Assistant" />
+        <SidebarItem icon={MonetizationOnIcon} to="cost-insights" text="Cost Insights" />
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>

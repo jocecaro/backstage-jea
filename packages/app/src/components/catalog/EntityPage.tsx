@@ -57,6 +57,7 @@ import {
   EntityKubernetesContent,
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
+import { EntityCostInsightsContent } from '@backstage-community/plugin-cost-insights';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -185,6 +186,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/costs" title="Cost Insights">
+      <EntityCostInsightsContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
