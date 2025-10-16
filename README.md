@@ -1,2 +1,10 @@
-# backstage-jea
-backstage.io demo for validating use at jea
+# [Backstage](https://backstage.io)
+
+This is your newly scaffolded Backstage App, Good Luck!
+
+To start the app, run:
+
+```sh
+yarn install
+yarn start
+```
