@@ -140,18 +140,18 @@ genai:
 
 # AWS Cost Insights Plugin Configuration
 costInsights:
-  engineerCost: 200000  # Average engineer cost (can be adjusted)
+  engineerCost: 200000 # Average engineer cost (can be adjusted)
 
 aws:
   costInsights:
     costExplorer:
       # accountId: '1111111111'  # Optional: Specify AWS account ID for consolidated billing
       # region: us-west-2  # Optional: Specify AWS region
-      costMetric: UnblendedCost  # Options: UnblendedCost, AmortizedCost, etc.
+      costMetric: UnblendedCost # Options: UnblendedCost, AmortizedCost, etc.
     cache:
-      enable: true  # Enable caching to reduce API costs
-      defaultTtl: 86400000  # Cache TTL: 1 day (in milliseconds)
-      readTime: 1000  # Cache read timeout: 1 second
+      enable: true # Enable caching to reduce API costs
+      defaultTtl: 86400000 # Cache TTL: 1 day (in milliseconds)
+      readTime: 1000 # Cache read timeout: 1 second
     # Optional: Configure entity-specific cost groupings
     entityGroups:
       - kind: Component

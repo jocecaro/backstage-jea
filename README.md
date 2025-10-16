@@ -14,17 +14,20 @@ A customized [Backstage](https://backstage.io) instance for JEA with Docker supp
 ### Local Development (Without Docker)
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/jocecaro/backstage-jea.git
    cd backstage-jea
    ```
 
 2. **Install dependencies**
+
    ```bash
    yarn install
    ```
 
 3. **Start the application**
+
    ```bash
    yarn start
    ```
@@ -34,20 +37,23 @@ A customized [Backstage](https://backstage.io) instance for JEA with Docker supp
 ### Local Development (With Docker)
 
 1. **Build and start services**
+
    ```bash
    # First build the backend
    yarn install
    yarn tsc
    yarn build:backend
-   
+
    # Then start with Docker Compose
    docker-compose up -d
    ```
 
 2. **Access the application**
+
    - Frontend & Backend: http://localhost:7007
 
 3. **View logs**
+
    ```bash
    docker-compose logs -f backstage
    ```
@@ -56,6 +62,8 @@ A customized [Backstage](https://backstage.io) instance for JEA with Docker supp
    ```bash
    docker-compose down
    ```
+
+For detailed Docker instructions and troubleshooting, see [Docker Guide](./docs/DOCKER_GUIDE.md).
 
 ## 📦 Building for Production
 
@@ -82,16 +90,18 @@ docker-compose build
 ### Deploying to AWS ECS
 
 1. **Push the Docker image to Amazon ECR**
+
    ```bash
    # Authenticate Docker to ECR
    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
-   
+
    # Tag and push the image
    docker tag backstage:latest <account-id>.dkr.ecr.us-east-1.amazonaws.com/backstage:latest
    docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/backstage:latest
    ```
 
 2. **Configure ECS Task Definition**
+
    - Set environment variables (POSTGRES_HOST, POSTGRES_USER, etc.)
    - Configure task resources (CPU, memory)
    - Set up load balancer for port 7007
@@ -104,11 +114,13 @@ docker-compose build
 ### Deploying to AWS EKS
 
 1. **Create Kubernetes manifests**
+
    ```bash
    # Example deployment.yaml and service.yaml needed
    ```
 
 2. **Apply to cluster**
+
    ```bash
    kubectl apply -f k8s/
    ```
@@ -126,9 +138,8 @@ This Backstage instance includes AWS plugins from [backstage-plugins-for-aws](ht
 - **AWS Gen-AI Plugin**: AI-powered assistant using AWS Bedrock (Claude models) or OpenAI
   - Navigate to "AI Assistant" in the sidebar
   - Ask questions about your platform, infrastructure, and documentation
-  
 - **AWS Cost Insights Plugin**: AWS cost monitoring and optimization
-  - View overall AWS spending in "Cost Insights" 
+  - View overall AWS spending in "Cost Insights"
   - See component-specific costs in entity pages
 
 For detailed configuration and usage instructions, see [AWS Plugins Documentation](./docs/AWS_PLUGINS.md).
@@ -144,6 +155,7 @@ cp .env.example .env
 ```
 
 Key configuration options:
+
 - `GITHUB_TOKEN`: For GitHub integrations
 - `POSTGRES_*`: Database connection settings
 - `BACKEND_SECRET`: Backend authentication secret
@@ -151,6 +163,7 @@ Key configuration options:
 ### App Configuration
 
 Main configuration files:
+
 - `app-config.yaml`: Development configuration
 - `app-config.production.yaml`: Production configuration
 - `app-config.local.yaml`: Local overrides (not committed)

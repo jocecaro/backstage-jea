@@ -19,7 +19,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: backstage.example.com  # Replace with your domain
+    - host: backstage.example.com # Replace with your domain
       http:
         paths:
           - path: /

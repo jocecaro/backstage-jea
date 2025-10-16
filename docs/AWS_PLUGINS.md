@@ -74,6 +74,7 @@ For AWS Bedrock integration, the IAM role/user needs:
 For local development without AWS credentials, you can use OpenAI:
 
 1. Set the environment variable:
+
    ```bash
    export OPENAI_API_KEY=your_api_key
    ```
@@ -105,7 +106,7 @@ The plugin is configured in `app-config.yaml`:
 
 ```yaml
 costInsights:
-  engineerCost: 200000  # Average engineer cost
+  engineerCost: 200000 # Average engineer cost
 
 aws:
   costInsights:
@@ -113,7 +114,7 @@ aws:
       costMetric: UnblendedCost
     cache:
       enable: true
-      defaultTtl: 86400000  # 1 day cache
+      defaultTtl: 86400000 # 1 day cache
     entityGroups:
       - kind: Component
         groups:
@@ -147,6 +148,7 @@ The IAM role/user needs:
 #### Global View
 
 Navigate to "Cost Insights" in the sidebar to see:
+
 - Overall AWS spending trends
 - Cost breakdown by service
 - Cost comparison over time
@@ -163,7 +165,7 @@ metadata:
   annotations:
     # Filter by AWS resource tags
     aws.amazon.com/cost-insights-tags: component=my-service,environment=prod
-    
+
     # Or use AWS Cost Categories
     # aws.amazon.com/cost-insights-cost-categories: myapp-category=myservice
 spec:
@@ -187,11 +189,12 @@ To use tag-based filtering, ensure:
 For organizations using consolidated billing:
 
 1. Configure the management account ID:
+
    ```yaml
    aws:
      costInsights:
        costExplorer:
-         accountId: '1111111111'  # Management account ID
+         accountId: '1111111111' # Management account ID
    ```
 
 2. Grant appropriate permissions in the management account
@@ -200,6 +203,7 @@ For organizations using consolidated billing:
 ### Cost Optimization
 
 The plugin helps identify:
+
 - Cost trends and anomalies
 - Most expensive services/resources
 - Cost allocation by team/component
@@ -210,6 +214,7 @@ The plugin helps identify:
 ### In AWS (ECS/EKS)
 
 When running in AWS:
+
 - Use IAM roles for ECS tasks or EKS service accounts
 - Roles are automatically assumed by the application
 - No credentials needed in configuration
@@ -219,11 +224,13 @@ When running in AWS:
 For local development, use one of:
 
 1. **AWS CLI Profile**
+
    ```bash
    export AWS_PROFILE=your-profile
    ```
 
 2. **Environment Variables**
+
    ```bash
    export AWS_ACCESS_KEY_ID=your_key
    export AWS_SECRET_ACCESS_KEY=your_secret
@@ -242,7 +249,8 @@ For local development, use one of:
 
 **Issue**: "Model not found" or "Access denied" errors
 
-**Solution**: 
+**Solution**:
+
 - Verify you have requested model access in AWS Bedrock console
 - Check IAM permissions include `bedrock:InvokeModel`
 - Ensure the region is correct in configuration
@@ -252,6 +260,7 @@ For local development, use one of:
 **Issue**: No cost data displayed
 
 **Solution**:
+
 - Verify cost allocation tags are enabled (takes 24 hours)
 - Check IAM permissions include `ce:GetCostAndUsage`
 - Ensure entity annotations match actual resource tags
@@ -260,6 +269,7 @@ For local development, use one of:
 **Issue**: "Rate limit exceeded" errors
 
 **Solution**:
+
 - Each Cost Explorer API call costs $0.01
 - Enable caching to reduce API calls
 - Increase cache TTL in configuration

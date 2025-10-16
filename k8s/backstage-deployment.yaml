@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: backstage:latest  # Replace with your ECR image URL
+          image: backstage:latest # Replace with your ECR image URL
           imagePullPolicy: Always
           ports:
             - name: http
@@ -51,11 +51,11 @@ spec:
                   optional: true
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: '512Mi'
+              cpu: '500m'
             limits:
-              memory: "1Gi"
-              cpu: "1000m"
+              memory: '1Gi'
+              cpu: '1000m'
           livenessProbe:
             httpGet:
               path: /healthcheck
