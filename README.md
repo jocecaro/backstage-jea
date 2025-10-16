@@ -2,6 +2,8 @@
 
 A customized [Backstage](https://backstage.io) instance for JEA with Docker support and AWS plugin integrations.
 
+📖 **New here?** Check out the [Getting Started Guide](./GETTING_STARTED.md) for a step-by-step walkthrough.
+
 ## 🚀 Quick Start
 
 ### Prerequisites
