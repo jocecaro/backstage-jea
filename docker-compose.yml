@@ -1,5 +1,5 @@
 version: '3.8'
-
+ 
 services:
   postgres:
     image: postgres:15-alpine
@@ -27,6 +27,8 @@ services:
       dockerfile: packages/backend/Dockerfile
     container_name: backstage-app
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       NODE_ENV: production
       POSTGRES_HOST: postgres

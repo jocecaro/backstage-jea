@@ -1,6 +1,7 @@
 app:
   # Should be the same as backend.baseUrl when using the `app-backend` plugin.
   baseUrl: http://localhost:7007
+  #baseUrl: https://probable-waffle-vqqqj5prq9xhx95r-7007.app.github.dev
 
 backend:
   # Note that the baseUrl should be the URL that the browser and other clients
@@ -9,9 +10,16 @@ backend:
   # callers. When its value is "http://localhost:7007", it's strictly private
   # and can't be reached by others.
   baseUrl: http://localhost:7007
+  #baseUrl: https://probable-waffle-vqqqj5prq9xhx95r-7007.app.github.dev
   # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
   # all interfaces, the most permissive setting. The right value depends on your specific deployment.
   listen: ':7007'
+  cors:
+    origin: https://probable-waffle-vqqqj5prq9xhx95r-7007.app.github.dev
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  auth:
+    dangerouslyDisableDefaultAuthPolicy: true
 
   # config options: https://node-postgres.com/apis/client
   database:
@@ -29,11 +37,26 @@ backend:
       #     $file: <file-path>/ca/server.crt
 
 auth:
+  environment: development
   providers:
     guest: {}
+    github:
+      development:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
+  session:
+    # Dev-only settings to make sessions work in Codespaces
+    secret: 'dev-session-secret-change-me'
+    sameSite: 'none'
+    secure: true
+    sessionCookie: 'insecure'
+# Permissions for guest access
+permission:
+  enabled: true
+  allowGuest: true
 
 catalog:
-  # Overrides the default list locations from app-config.yaml as these contain example data.
+  # Overrides the default list locations from app-c  docker-compose restart backstageonfig.yaml as these contain example data.
   # See https://backstage.io/docs/features/software-catalog/#adding-components-to-the-catalog for more details
   # on how to get entities into the catalog.
   locations:
