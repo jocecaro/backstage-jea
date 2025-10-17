@@ -1,7 +1,7 @@
 app:
   title: Scaffolded Backstage App
   baseUrl: http://localhost:3000
-
+  #baseUrl: https://probable-waffle-vqqqj5prq9xhx95r-3000.app.github.dev
 organization:
   name: My Company
 
@@ -13,6 +13,7 @@ backend:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
   baseUrl: http://localhost:7007
+  #baseUrl: https://probable-waffle-vqqqj5prq9xhx95r-7007.app.github.dev
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -23,6 +24,7 @@ backend:
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
     origin: http://localhost:3000
+    #origin: https://probable-waffle-vqqqj5prq9xhx95r-3000.app.github.dev
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
@@ -67,6 +69,8 @@ auth:
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+  session:
+    sessionCookie: 'insecure'
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -94,6 +98,10 @@ catalog:
       rules:
         - allow: [User, Group]
 
+    # Root-level catalog-info.yaml
+    - type: file
+      target: ../../catalog-info.yaml
+
     ## Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
@@ -111,6 +119,7 @@ kubernetes:
 permission:
   # setting this to `false` will disable permissions
   enabled: true
+  allowGuest: true
 
 # AWS GenAI Plugin Configuration
 genai:
