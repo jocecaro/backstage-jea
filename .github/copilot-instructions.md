@@ -3,6 +3,7 @@
 ## Technology Stack
 
 This is a [Backstage](https://backstage.io) application customized for JEA with:
+
 - **Node.js**: Version 20 or 22
 - **TypeScript**: ~5.8.0
 - **React**: ^18.0.2 with JSX transform (`jsx: "react-jsx"`)
@@ -14,6 +15,7 @@ This is a [Backstage](https://backstage.io) application customized for JEA with:
 ## Project Structure
 
 This is a Yarn workspaces monorepo with:
+
 - `packages/app/`: Frontend React application
 - `packages/backend/`: Backend Node.js service
 - `plugins/`: Custom Backstage plugins
@@ -57,6 +59,7 @@ This is a Yarn workspaces monorepo with:
 ## AWS Plugin Integration
 
 This project integrates AWS-specific Backstage plugins:
+
 - **AWS Gen-AI Plugin**: Uses AWS Bedrock (Claude models) or OpenAI for AI assistance
 - **AWS Cost Insights Plugin**: Monitors and optimizes AWS costs
 - Use the existing AWS plugin patterns when adding new AWS-related features
